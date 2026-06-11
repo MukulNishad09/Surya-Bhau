@@ -3,225 +3,236 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Prediction UI</title>
+<title>Premium Landing Page</title>
 
 <style>
-
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #0a0f1f, #050814);
-  color: white;
-  text-align: center;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
 }
 
-/* Glass effect */
-.glass {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0,255,255,0.1);
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+
+background:
+radial-gradient(circle at top left,#0d7f73 0%,transparent 40%),
+radial-gradient(circle at bottom right,#7b4dff 0%,transparent 40%),
+linear-gradient(135deg,#05172a,#081321,#020617);
+
+overflow-x:hidden;
 }
 
-/* Container */
-.container {
-  padding: 20px;
+.card{
+width:100%;
+max-width:650px;
+
+background:rgba(15,20,35,.58);
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:35px;
+
+padding:35px 25px;
+
+text-align:center;
+
+box-shadow:
+0 0 40px rgba(0,255,180,.08),
+0 0 80px rgba(130,87,229,.08);
 }
 
-/* Profile */
-.profile img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  background: linear-gradient(45deg,#00f0ff,#a855f7) border-box;
-  padding: 3px;
-  animation: float 3s ease-in-out infinite;
+.logo{
+width:130px;
+height:130px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid rgba(255,255,255,.08);
 }
 
-@keyframes float {
-  0% { transform: translateY(0px);}
-  50% { transform: translateY(-10px);}
-  100% { transform: translateY(0px);}
+.title{
+margin-top:18px;
+
+font-size:42px;
+font-weight:700;
+
+background:linear-gradient(
+90deg,
+#1adbb7,
+#58a7ff,
+#8d63ff);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-h1 {
-  margin: 10px 0;
+.feature{
+margin-top:16px;
+
+padding:18px 20px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:white;
+
+font-size:22px;
+
+text-align:left;
 }
 
-/* Stats */
-.stats {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
+.join-btn{
+display:block;
+
+margin-top:28px;
+
+padding:22px;
+
+text-decoration:none;
+
+font-size:30px;
+
+font-weight:bold;
+
+color:white;
+
+border-radius:60px;
+
+background:linear-gradient(
+90deg,
+#1adbb7,
+#5aa6ff,
+#8d63ff);
+
+box-shadow:
+0 0 20px rgba(26,219,183,.35),
+0 0 40px rgba(141,99,255,.25);
 }
 
-.card {
-  flex: 1;
-  padding: 15px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.05);
-  transition: 0.3s;
-  position: relative;
-  overflow: hidden;
+.adsby{
+display:inline-flex;
+
+align-items:center;
+
+gap:8px;
+
+margin-top:18px;
+
+padding:8px 14px;
+
+border-radius:50px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+text-decoration:none;
+
+color:white;
+
+font-size:13px;
 }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #00f0ff;
+.adsby img{
+width:20px;
+height:20px;
+border-radius:50%;
 }
 
-.card h2 {
-  color: #a855f7;
+.copy{
+margin-top:18px;
+color:#bcbcbc;
+font-size:14px;
 }
 
-/* Button */
-.btn {
-  margin-top: 25px;
-  width: 90%;
-  padding: 15px;
-  font-size: 18px;
-  border-radius: 30px;
-  border: none;
-  color: white;
-  cursor: pointer;
-  background: linear-gradient(270deg,#00c6ff,#a044ff,#00c6ff);
-  background-size: 400% 400%;
-  animation: gradientMove 6s ease infinite;
-  box-shadow: 0 0 20px rgba(0,255,255,0.5);
+.links{
+margin-top:18px;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0%;}
-  50% { background-position: 100%;}
-  100% { background-position: 0%;}
+.links a{
+color:white;
+margin:0 12px;
 }
 
-.btn:hover {
-  transform: scale(1.05);
+.disclaimer{
+margin-top:18px;
+color:#9f9f9f;
+font-size:13px;
+line-height:1.5;
 }
 
-/* Timer */
-.timer-box {
-  margin-top: 25px;
-  padding: 20px;
+@media(max-width:600px){
+
+.logo{
+width:100px;
+height:100px;
 }
 
-.timer {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
+.title{
+font-size:30px;
 }
 
-.timer div {
-  font-size: 22px;
-  color: #00eaff;
+.feature{
+font-size:16px;
+padding:14px;
 }
 
-/* Section */
-.section {
-  margin-top: 25px;
-  padding: 20px;
-  text-align: left;
+.join-btn{
+font-size:22px;
+padding:18px;
 }
 
-/* Glow border animation */
-.glow-border {
-  position: relative;
 }
-
-.glow-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  padding: 2px;
-  background: linear-gradient(45deg,#00f0ff,#a855f7,#00f0ff);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: borderGlow 4s linear infinite;
-}
-
-@keyframes borderGlow {
-  0% { filter: hue-rotate(0deg);}
-  100% { filter: hue-rotate(360deg);}
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="card">
 
-  <!-- Profile -->
-  <div class="profile">
-    <img src="logo.png">
-    <h1>𝘼𝙉𝙐𝙍𝘼𝙂 𝙏𝙄𝙋𝙎 [ 🇮🇳 ]™</h1>
-    <p style="color:#00eaff;">👥 10K+ Followers</p>
-  </div>
+<img src="logo.png" class="logo">
 
-  <!-- Stats -->
-  <div class="stats">
-    <div class="card glow-border">
-      <h2>50K+</h2>
-      <p>Subscribers</p>
-    </div>
-    <div class="card glow-border">
-      <h2>1547</h2>
-      <p>Predictions</p>
-    </div>
-    <div class="card glow-border">
-      <h2>98%</h2>
-      <p>Accuracy</p>
-    </div>
-  </div>
-
-  <!-- Button -->
-  <button class="btn" onclick="joinTelegram()">Join Telegram Channel</button>
-
-  <!-- Timer -->
-  <div class="timer-box glass">
-    <h3>Next Prediction In</h3>
-    <div class="timer">
-      <div><span id="hours">01</span><br>Hours</div>
-      <div><span id="minutes">00</span><br>Minutes</div>
-      <div><span id="seconds">00</span><br>Seconds</div>
-    </div>
-  </div>
-
-  <!-- Section -->
-  <div class="section glass">
-    <h3>Pre-match Predictions</h3>
-    <p>Daily expert analysis before matches start with high win rate predictions.</p>
-  </div>
-
+<div class="title">
+ SURYA BHAU [ 2019 ]
 </div>
 
-<script>
+<div class="feature">• Expert backed predictions</div>
+<div class="feature">• Fan sentiment tracking</div>
+<div class="feature">• Performance trends</div>
+<div class="feature">• Tactical breakdowns</div>
 
-// Telegram redirect
-function joinTelegram() {
-  window.location.href = "https://t.me/+tZsZ8StBn7BhODBl";
-}
+<a href="https://t.me/+rIyZQwSvTvhmOGI1" class="join-btn">
+JOIN NOW
+</a>
 
-// Timer
-let time = 3600;
+<a href="https://your-site.com" class="adsby">
+<img src="ads-logo.png">
+Ads By Custom
+</a>
 
-setInterval(() => {
-  let h = Math.floor(time / 3600);
-  let m = Math.floor((time % 3600) / 60);
-  let s = time % 60;
+<div class="copy">
+© 2026 • ALL RIGHTS RESERVED
+</div>
 
-  document.getElementById("hours").innerText = String(h).padStart(2,'0');
-  document.getElementById("minutes").innerText = String(m).padStart(2,'0');
-  document.getElementById("seconds").innerText = String(s).padStart(2,'0');
+<div class="links">
+<a href="#">Privacy Policy</a>
+<a href="#">Terms of Service</a>
+</div>
 
-  if (time > 0) time--;
-}, 1000);
+<div class="disclaimer">
+This website is independently operated and is not affiliated with Meta or Facebook.
+</div>
 
-</script>
+</div>
 
 </body>
 </html>
