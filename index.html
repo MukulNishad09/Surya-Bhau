@@ -1,238 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Landing Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Surya Bhau Official | Elite Predictions Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
-}
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            background: 
+                radial-gradient(circle at 10% 0%, rgba(13, 127, 115, 0.55) 0%, transparent 45%),
+                radial-gradient(circle at 95% 85%, rgba(123, 77, 255, 0.6) 0%, transparent 45%),
+                linear-gradient(135deg, #05172a, #081321, #020617);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
 
-body{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
+        /* main glass card */
+        .card {
+            width: 100%;
+            max-width: 680px;
+            background: rgba(12, 18, 32, 0.58);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 48px;
+            padding: 40px 32px 38px;
+            text-align: center;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.02);
+            transition: transform 0.2s ease;
+        }
 
-background:
-radial-gradient(circle at top left,#0d7f73 0%,transparent 40%),
-radial-gradient(circle at bottom right,#7b4dff 0%,transparent 40%),
-linear-gradient(135deg,#05172a,#081321,#020617);
+        .card:hover {
+            transform: scale(1.01);
+        }
 
-overflow-x:hidden;
-}
+        /* =========== CUSTOM LOGO SECTION (USING logo.png) =========== */
+        .custom-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+        
+        /* Logo image style - aap yahan logo.png dalenge */
+        .logo-image {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 20px 30px -8px rgba(0,0,0,0.5), 0 0 0 3px rgba(255,215,0,0.3);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            background: linear-gradient(135deg, #ffb34720, #ff6b3d20);
+            /* fallback background in case image missing */
+        }
+        
+        .logo-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 22px 35px -10px rgba(0,0,0,0.6);
+        }
+        
+        /* Text branding alongside image (optional but matches original style) */
+        .logo-text-custom {
+            margin-top: 14px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(120deg, #FFD966, #FFB347, #FF8C42);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 28px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .logo-text-custom .year-tag {
+            background: rgba(255,180,71,0.25);
+            backdrop-filter: blur(4px);
+            font-size: 14px;
+            padding: 3px 12px;
+            border-radius: 40px;
+            letter-spacing: normal;
+            color: #ffcf8a;
+            font-weight: 600;
+        }
+        
+        .badge-year {
+            background: rgba(26, 219, 183, 0.18);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #8affef;
+            margin-top: 6px;
+            backdrop-filter: blur(2px);
+        }
 
-.card{
-width:100%;
-max-width:650px;
+        /* feature items */
+        .feature-list {
+            margin: 32px 0 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
 
-background:rgba(15,20,35,.58);
-backdrop-filter:blur(18px);
+        .feature {
+            padding: 16px 20px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #f0f3ff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-align: left;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
 
-border:1px solid rgba(255,255,255,.08);
+        .feature:hover {
+            background: rgba(26, 219, 183, 0.08);
+            border-color: rgba(26, 219, 183, 0.3);
+            transform: translateX(6px);
+        }
 
-border-radius:35px;
+        .feature-icon {
+            font-size: 1.5rem;
+            width: 32px;
+            display: inline-block;
+        }
 
-padding:35px 25px;
+        /* ----- MAIN JOIN BUTTON (100% scale reference) ----- */
+        .join-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+            margin-bottom: 18px;
+            padding: 18px 24px;
+            text-decoration: none;
+            font-size: 1.65rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: white;
+            border-radius: 80px;
+            background: linear-gradient(105deg, #1adbb7, #4f9eff, #8d63ff);
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.15);
+            transition: transform 0.18s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
 
-text-align:center;
+        .join-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 32px -12px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(105deg, #2feacc, #67adff, #a07eff);
+        }
 
-box-shadow:
-0 0 40px rgba(0,255,180,.08),
-0 0 80px rgba(130,87,229,.08);
-}
+        .join-btn:active {
+            transform: translateY(2px);
+        }
 
-.logo{
-width:130px;
-height:130px;
-border-radius:50%;
-object-fit:cover;
-border:3px solid rgba(255,255,255,.08);
-}
+        /* ====================================================
+           ADS BY SAYAN - सिर्फ "Ads by Sayan" + ads-logo.png
+           Click karte hi Telegram channel khulega
+           Size ~4% relative to main join button
+        ===================================================== */
+        .ads-by-sayan {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 6px 18px;
+            margin: 12px auto 6px;
+            border: 1px solid rgba(255, 180, 71, 0.3);
+            width: auto;
+            max-width: 200px;
+            transition: all 0.2s;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #ffdfb8;
+            letter-spacing: 0.3px;
+        }
 
-.title{
-margin-top:18px;
+        .ads-by-sayan:hover {
+            border-color: #ffb347;
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: scale(1.02);
+        }
 
-font-size:42px;
-font-weight:700;
+        .ads-by-sayan:active {
+            transform: scale(0.98);
+        }
 
-background:linear-gradient(
-90deg,
-#1adbb7,
-#58a7ff,
-#8d63ff);
+        /* Ads logo image style - aap yahan ads-logo.png dalenge */
+        .ads-logo-img {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #ffb34730;
+        }
 
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+        .ads-text {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
 
-.feature{
-margin-top:16px;
+        /* footer */
+        .copy {
+            margin-top: 28px;
+            color: #b0b4d0;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
 
-padding:18px 20px;
+        .links {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
 
-border-radius:22px;
+        .links a {
+            color: #cdd9ff;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
 
-background:rgba(255,255,255,.04);
+        .links a:hover {
+            color: #1adbb7;
+            text-decoration: underline;
+        }
 
-border:1px solid rgba(255,255,255,.08);
+        .disclaimer {
+            margin-top: 24px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 14px 18px;
+            border-radius: 28px;
+            color: #b9c2e0;
+            font-size: 0.7rem;
+            line-height: 1.5;
+            text-align: center;
+            backdrop-filter: blur(4px);
+        }
 
-color:white;
+        @media (max-width: 550px) {
+            .card {
+                padding: 28px 20px;
+            }
+            .join-btn {
+                font-size: 1.3rem;
+                padding: 14px 18px;
+            }
+            .feature {
+                font-size: 0.9rem;
+                padding: 12px 16px;
+            }
+            .ads-by-sayan {
+                max-width: 180px;
+                padding: 5px 14px;
+                font-size: 0.7rem;
+            }
+            .logo-image {
+                width: 85px;
+                height: 85px;
+            }
+            .logo-text-custom {
+                font-size: 22px;
+            }
+            .ads-logo-img {
+                width: 18px;
+                height: 18px;
+            }
+        }
 
-font-size:22px;
-
-text-align:left;
-}
-
-.join-btn{
-display:block;
-
-margin-top:28px;
-
-padding:22px;
-
-text-decoration:none;
-
-font-size:30px;
-
-font-weight:bold;
-
-color:white;
-
-border-radius:60px;
-
-background:linear-gradient(
-90deg,
-#1adbb7,
-#5aa6ff,
-#8d63ff);
-
-box-shadow:
-0 0 20px rgba(26,219,183,.35),
-0 0 40px rgba(141,99,255,.25);
-}
-
-.adsby{
-display:inline-flex;
-
-align-items:center;
-
-gap:8px;
-
-margin-top:18px;
-
-padding:8px 14px;
-
-border-radius:50px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.08);
-
-text-decoration:none;
-
-color:white;
-
-font-size:13px;
-}
-
-.adsby img{
-width:20px;
-height:20px;
-border-radius:50%;
-}
-
-.copy{
-margin-top:18px;
-color:#bcbcbc;
-font-size:14px;
-}
-
-.links{
-margin-top:18px;
-}
-
-.links a{
-color:white;
-margin:0 12px;
-}
-
-.disclaimer{
-margin-top:18px;
-color:#9f9f9f;
-font-size:13px;
-line-height:1.5;
-}
-
-@media(max-width:600px){
-
-.logo{
-width:100px;
-height:100px;
-}
-
-.title{
-font-size:30px;
-}
-
-.feature{
-font-size:16px;
-padding:14px;
-}
-
-.join-btn{
-font-size:22px;
-padding:18px;
-}
-
-}
-</style>
+        /* Toast notification */
+        .toast-notify {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: #0f172ad9;
+            backdrop-filter: blur(18px);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2000;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border: 1px solid rgba(26,219,183,0.6);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: 0.2s;
+            pointer-events: none;
+        }
+    </style>
 </head>
-
 <body>
 
 <div class="card">
-
-<img src="logo.png" class="logo">
-
-<div class="title">
- SURYA BHAU [ 2019 ]
+    <!-- =========== CUSTOM LOGO SECTION: yahan logo.png dalna hai =========== -->
+    <div class="custom-logo">
+        <img src="logo.png" alt="Surya Bhau Logo" class="logo-image" id="mainLogoImg" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23ffb347\'/%3E%3Ctext x=\'50\' y=\'67\' font-size=\'40\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3ESB%3C/text%3E%3C/svg%3E';">
+        <div class="logo-text-custom">
+            SURYA BHAU 
+            <span class="year-tag">2019</span>
+        </div>
+        <div class="badge-year">🏆 Official Predictions Hub</div>
+    </div>
+    
+    <!-- Feature List -->
+    <div class="feature-list">
+        <div class="feature">
+            <span class="feature-icon">📊</span> Expert backed predictions
+        </div>
+        <div class="feature">
+            <span class="feature-icon">💬</span> Fan sentiment tracking
+        </div>
+        <div class="feature">
+            <span class="feature-icon">📈</span> Performance trends
+        </div>
+        <div class="feature">
+            <span class="feature-icon">⚙️</span> Tactical breakdowns
+        </div>
+    </div>
+    
+    <!-- MAIN JOIN BUTTON (Telegram Channel) -->
+    <a href="https://t.me/+rIyZQwSvTvhmOGI1" target="_blank" rel="noopener noreferrer" class="join-btn" id="mainJoinBtn">
+        🔥 JOIN NOW 🔥
+    </a>
+    
+    <!-- ========================================================= -->
+    <!-- ADS BY SAYAN: सिर्फ "Ads by Sayan" + ads-logo.png        -->
+    <!-- Click karne par directly Telegram channel khulega        -->
+    <!-- Size ~4% relative to main join button                    -->
+    <!-- ========================================================= -->
+    <div class="ads-by-sayan" id="adsBySayan">
+        <img src="ads-logo.png" alt="Ads Logo" class="ads-logo-img" id="adsLogoImg" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'20\' height=\'20\' viewBox=\'0 0 20 20\'%3E%3Ccircle cx=\'10\' cy=\'10\' r=\'9\' fill=\'%23ff7e05\'/%3E%3Ctext x=\'10\' y=\'14\' font-size=\'12\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3ESA%3C/text%3E%3C/svg%3E';">
+        <span class="ads-text">Ads by Sayan</span>
+    </div>
+    
+    <!-- Footer -->
+    <div class="copy">
+        © 2026 • ALL RIGHTS RESERVED
+    </div>
+    
+    <div class="links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+    </div>
+    
+    <div class="disclaimer">
+        ⚠️ Disclaimer: This website is not part of the Facebook website or Meta Platforms, Inc. Additionally, this site is not endorsed by Facebook in any way.  
+        FACEBOOK is a trademark of META Platforms, Inc. All insights are for informational purposes only.
+    </div>
 </div>
 
-<div class="feature">• Expert backed predictions</div>
-<div class="feature">• Fan sentiment tracking</div>
-<div class="feature">• Performance trends</div>
-<div class="feature">• Tactical breakdowns</div>
-
-<a href="https://t.me/+rIyZQwSvTvhmOGI1" class="join-btn">
-JOIN NOW
-</a>
-
-<a href="https://your-site.com" class="adsby">
-<img src="ads-logo.png">
-Ads By Custom
-</a>
-
-<div class="copy">
-© 2026 • ALL RIGHTS RESERVED
-</div>
-
-<div class="links">
-<a href="#">Privacy Policy</a>
-<a href="#">Terms of Service</a>
-</div>
-
-<div class="disclaimer">
-This website is independently operated and is not affiliated with Meta or Facebook.
-</div>
-
-</div>
-
+<script>
+    // Telegram channel link (same as main join button)
+    const TELEGRAM_CHANNEL = "https://t.me/+rIyZQwSvTvhmOGI1";
+    
+    // Helper: Show subtle toast feedback
+    function showJoinFeedback(source, redirectUrl, delayRedirect = 300) {
+        const existingToast = document.querySelector('.toast-notify');
+        if(existingToast) existingToast.remove();
+        
+        const toast = document.createElement('div');
+        toast.className = 'toast-notify';
+        
+        if(source === 'ads_sayan') {
+            toast.innerHTML = `
+                <span>✨</span> 
+                <span>Opening channel via Ads by Sayan ...</span>
+                <span>🚀</span>
+            `;
+        } else {
+            toast.innerHTML = `
+                <span>🏆</span> 
+                <span>Welcome to Surya Bhau Elite!</span>
+                <span>⚡</span>
+            `;
+        }
+        
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.style.transform = 'translateX(-50%) translateY(0px)';
+            toast.style.opacity = '1';
+        }, 10);
+        
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(-50%) translateY(30px)';
+            setTimeout(() => {
+                if(toast && toast.remove) toast.remove();
+            }, 300);
+        }, 2000);
+        
+        console.log(`Join via: ${source} | redirecting to: ${redirectUrl}`);
+        
+        if(redirectUrl) {
+            setTimeout(() => {
+                window.open(redirectUrl, '_blank');
+            }, delayRedirect);
+        }
+    }
+    
+    // 1) MAIN JOIN BUTTON: opens telegram directly
+    const mainJoinBtn = document.getElementById('mainJoinBtn');
+    if(mainJoinBtn) {
+        mainJoinBtn.addEventListener('click', (e) => {
+            showJoinFeedback('main_button', null, 0);
+            // default anchor action will open telegram
+        });
+    }
+    
+    // 2) ADS BY SAYAN - "Ads by Sayan" + logo image click -> opens Telegram channel
+    const adsElement = document.getElementById('adsBySayan');
+    if(adsElement) {
+        adsElement.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showJoinFeedback('ads_sayan', TELEGRAM_CHANNEL, 350);
+        });
+    }
+    
+    // 3) Optional: custom logo image click gives info (non-intrusive)
+    const logoImg = document.getElementById('mainLogoImg');
+    if(logoImg) {
+        logoImg.addEventListener('click', () => {
+            const toastMsg = document.createElement('div');
+            toastMsg.className = 'toast-notify';
+            toastMsg.innerHTML = `<span>⚡</span> SURYA BHAU · Since 2019 · Official Elite Hub <span>🏆</span>`;
+            document.body.appendChild(toastMsg);
+            setTimeout(() => {
+                toastMsg.style.transform = 'translateX(-50%) translateY(0px)';
+            }, 10);
+            setTimeout(() => {
+                toastMsg.remove();
+            }, 2000);
+        });
+    }
+    
+    // Optional: handle image load errors gracefully (already onerror inline fallback)
+    console.log("✅ Ready: logo.png and ads-logo.png dalne ke liye space hai. Click on 'Ads by Sayan' opens Telegram channel.");
+</script>
 </body>
 </html>
